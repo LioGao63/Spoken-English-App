@@ -1,5 +1,6 @@
 package com.wx.speaking.controller;
 
+import com.wx.speaking.bean.Record;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +34,10 @@ public class RecordController {
 
         File file = new File(desFile);
         recordFile.transferTo(file);
+        System.out.println(file);
+
+        String textPath = "[word]abide";
+        Record.callApi("read_word", file.toString(), textPath);
 
     }
 }
