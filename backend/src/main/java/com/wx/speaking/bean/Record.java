@@ -15,11 +15,11 @@ import java.util.Map;
 
 public class Record {
     // 合成webapi接口地址
-    private static final String WEBISE_URL = "https://api.xfyun.cn/v1/service/v1/ise";
+    private static final String WEBISE_URL = "";
     // 应用ID
-    private static final String APPID = "5e06ebad";
+    private static final String APPID = "";
     // 接口密钥
-    private static final String API_KEY = "a6963cb34d0abadb7d1722df6e53f915";
+    private static final String API_KEY = "";
     // 音频编码
     private static final String AUE = "raw";
     // 采样率
