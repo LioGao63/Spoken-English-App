@@ -1,9 +1,11 @@
 package com.wx.speaking.bean;
 
+import com.wx.speaking.controller.SentenceController;
 import com.wx.speaking.utils.FileUtil;
 import com.wx.speaking.utils.HttpUtil;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
+import com.wx.speaking.controller.RecordController;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -32,6 +34,8 @@ public class Record {
     private static String AUDIO_PATH = "";
     // 评测文本
     private static String TEXT = "";
+    //全维度
+    private static String EXTRA_ABILITY = "multi_dimension";
 
     /**
      * 评测 WebAPI 调用示例程序
@@ -45,6 +49,7 @@ public class Record {
         String audioBase64 = new String(Base64.encodeBase64(audioByteArray), "UTF-8");
         String result = HttpUtil.doPost1(WEBISE_URL, header, "audio=" + URLEncoder.encode(audioBase64, "UTF-8") + "&text=" + URLEncoder.encode(TEXT, "UTF-8"));
         System.out.println("评测 WebAPI 接口调用结果：" + result);
+//        ResultController.resolveJson(result);
 
     }
 
@@ -53,7 +58,7 @@ public class Record {
      */
     private static Map<String, String> buildHttpHeader(String category) throws UnsupportedEncodingException {
         String curTime = System.currentTimeMillis() / 1000L + "";
-        String param = "{\"auf\":\"" + AUF + "\",\"aue\":\"" + AUE + "\",\"result_level\":\"" + RESULT_LEVEL + "\",\"language\":\"" + LANGUAGE + "\",\"category\":\"" + CATEGORY + "\"}";
+        String param = "{\"auf\":\"" + AUF + "\",\"aue\":\"" + AUE + "\",\"result_level\":\"" + RESULT_LEVEL + "\",\"language\":\"" + LANGUAGE + "\",\"category\":\"" + CATEGORY + "\",\"extra_ability\":\"" + EXTRA_ABILITY + "\"}";
         String paramBase64 = new String(Base64.encodeBase64(param.getBytes("UTF-8")));
         String checkSum = DigestUtils.md5Hex(API_KEY + curTime + paramBase64);
         Map<String, String> header = new HashMap<String, String>();
