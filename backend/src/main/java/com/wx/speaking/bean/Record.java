@@ -15,11 +15,11 @@ import java.util.Map;
 
 public class Record {
     // 合成webapi接口地址
-    private static final String WEBISE_URL = "";
+    private static final String WEBISE_URL = "https://api.xfyun.cn/v1/service/v1/ise";
     // 应用ID
-    private static final String APPID = "";
+    private static final String APPID = "5e06ebad";
     // 接口密钥
-    private static final String API_KEY = "";
+    private static final String API_KEY = "a6963cb34d0abadb7d1722df6e53f915";
     // 音频编码
     private static final String AUE = "raw";
     // 采样率
@@ -50,6 +50,7 @@ public class Record {
         String result = HttpUtil.doPost1(WEBISE_URL, header, "audio=" + URLEncoder.encode(audioBase64, "UTF-8") + "&text=" + URLEncoder.encode(TEXT, "UTF-8"));
         System.out.println("评测 WebAPI 接口调用结果：" + result);
 //        ResultController.resolveJson(result);
+        SentenceController.resolveJson(result);
 
     }
 

@@ -77,7 +77,7 @@ public class SentenceController {
             wordScore.add(Double.parseDouble(df.format(wordScoreString.getDouble(i))));
             dp_message.add(Integer.parseInt(String.valueOf(dpString.getInteger(i))));
         }
-        
+
         resultJson.put("total_score", total_score);
         resultJson.put("accuracy_score", accuracy_score);
         resultJson.put("fluency_score", fluency_score);

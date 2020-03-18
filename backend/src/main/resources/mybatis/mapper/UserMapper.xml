@@ -14,6 +14,8 @@
         userinfo(id,userName,userSex,email,education,intro)
         VALUES
         (#{user.id},#{user.userName},#{user.userSex},#{user.email},#{user.education},#{user.intro})
+        WHERE NOT EXISTS
+        (SELECT * FROM userinfo WHERE id=#{user.id})
     </insert>
 
     <update id="updateUser" >

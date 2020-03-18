@@ -14,4 +14,5 @@ public interface UserMapper {
 
     //用户修改信息
     public void updateUser(User user);
+
 }

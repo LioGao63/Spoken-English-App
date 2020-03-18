@@ -21,7 +21,6 @@ public class RecordController {
         MultipartHttpServletRequest req = (MultipartHttpServletRequest) request;
         String savePath = "F:\\J2EE\\speaking\\src\\main\\resources\\record";
 
-
         String id = request.getParameter("id");
         String password = request.getParameter("password");
 
@@ -36,8 +35,8 @@ public class RecordController {
         recordFile.transferTo(file);
         System.out.println(file);
 
-        String textPath = "[word]abide";
-        Record.callApi("read_word", file.toString(), textPath);
+        String textPath = "[content]She refused to speak to me at first.";
+        Record.callApi("read_sentence", file.toString(), textPath);
 
     }
 }

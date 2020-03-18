@@ -1,7 +1,10 @@
 package com.wx.speaking.controller;
 
+import com.wx.speaking.bean.User;
+import com.wx.speaking.mapper.UserMapper;
 import com.wx.speaking.utils.HttpRequest ;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +22,9 @@ import com.alibaba.fastjson.*;
 @RestController
 public class LoginController {
 
+    @Autowired
+    UserMapper userMapper;
+
     @PostMapping( "/login")
     public void buttonTest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -32,8 +38,7 @@ public class LoginController {
         // 授权（必填）
         String grant_type = "authorization_code";
 
-        //////////////// 1、向微信服务器 使用登录凭证 code 获取 session_key 和 openid
-        //////////////// ////////////////
+        // 1、向微信服务器 使用登录凭证 code 获取 session_key 和 openid
         // 请求参数
         String params = "appid=" + wxspAppid + "&secret=" + wxspSecret + "&js_code=" + code + "&grant_type="
                 + grant_type;
@@ -56,6 +61,13 @@ public class LoginController {
         out.write(openid);
         out.flush();
 
+    }
+
+    //通过id获取用户资料
+    @GetMapping("/getUser/{id}")
+    public User getUserInfo(@PathVariable("id") Integer id){
+        User user = userMapper.getUserById(id);
+        return user;
     }
 
 
