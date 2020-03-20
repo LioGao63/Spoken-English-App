@@ -12,13 +12,13 @@
     <update id="updateWord">
         UPDATE word
         SET
-          word=#{word.word}
-          video_path=#{word.videoPath}
-          course_id=#{word.courseId}
-          score=#{word.totalScore}
-          flag=#{word.flag}
+          word=#{word}
+          video_path=#{videoPath}
+          course_id=#{courseId}
+          score=#{totalScore}
+          flag=#{flag}
         WHERE
-          id=#{word.id}
+          id=#{id}
     </update>
 
     <select id="getAllWord" resultType="com.wx.speaking.bean.Word">

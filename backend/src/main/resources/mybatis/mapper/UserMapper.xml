@@ -12,20 +12,20 @@
     <insert id="addUser">
         INSERT INTO
         userinfo(id,userName,userSex,email,education,intro)
-        VALUES
-        (#{user.id},#{user.userName},#{user.userSex},#{user.email},#{user.education},#{user.intro})
-        WHERE NOT EXISTS
-        (SELECT * FROM userinfo WHERE id=#{user.id})
+        select
+        #{id},#{userName},#{userSex},#{email},#{education},#{intro}
+        FROM userinfo WHERE NOT EXISTS
+        (SELECT * FROM userinfo WHERE id=#{id})
     </insert>
 
     <update id="updateUser" >
         UPDATE userinfo
         SET
-          userName = #{user.userName},
-          userSex = #{user.userSex},
-          email = #{user.email},
-          education = #{user.education},
-          intro = #{user.intro}
-        WHERE id = #{user.id}
+          userName = #{userName},
+          userSex = #{userSex},
+          email = #{email},
+          education = #{education},
+          intro = #{intro}
+        WHERE id = #{id}
     </update>
 </mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.speaking.mapper.SentenceMapper">
+    <select id="getSentenceById" resultType="com.wx.speaking.bean.Sentence">
+        SELECT * FROM sentence WHERE id=#{id}
+    </select>
+
+    <update id="updateSentence">
+        UPDATE sentence
+        SET
+          content=#{content}
+          video_path=#{videoPath}
+          course_id=#{courseId}
+          total_score=#{totalScore}
+          accuracy_score=#{accuracyScore}
+          fluency_score=#{fluencyScore}
+          integrity_core=#{integrityScore}
+          word_score=#{wordScore}
+          flag=#{flag}
+        WHERE
+          id=#{id}
+    </update>
+</mapper>
