@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wx.speaking.mapper.SentenceInfoMapper">
+
+    <select id="searchSentence_info" resultType="com.wx.speaking.bean.SentenceInfo">
+        SELECT * FROM sentence_info WHERE user_id=#{userId} and sentence_id=#{sentenceId}
+    </select>
+
+    <insert id="insertSentence_info">
+        INSERT INTO
+        sentence_info(userId,sentenceId,accuracyScore,fluencyScore,integrityScore,totalScore,count)
+        VALUES
+        (#{userId},#{sentenceId},#{accuracyScore},#{fluencyScore},#{integrityScore},#{totalScore},1)
+        ON DUPLICATE KEY UPDATE
+        accuracy_score=#{accuracyScore},fluency_score=#{fluencyScore},integrity_score=#{integrityScore},total_score,count=count+1
+    </insert>
+
+    <update id="updateSentence_info" >
+        UPDATE sentence_info
+        SET
+        sentence_id = #{sentenceId},
+        accuracy_score = #{accuracyScore},
+        fluency_score = #{fluencyScore},
+        integrity_score = #{integrityScore},
+        total_score = #{totalScore}
+        WHERE user_id=#{userId} and sentence_id=#{sentenceId}
+    </update>
+
+    <delete id="deleteSentence_info">
+        DELETE from sentence_info where user_id=#{userId} and sentence_id=#{sentenceId}
+    </delete>
+
+
+</mapper>

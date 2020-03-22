@@ -9,17 +9,18 @@
         SELECT * FROM word WHERE id=#{id}
     </select>
 
-    <update id="updateWord">
-        UPDATE word
-        SET
-          word=#{word}
-          video_path=#{videoPath}
-          course_id=#{courseId}
-          score=#{totalScore}
-          flag=#{flag}
-        WHERE
-          id=#{id}
-    </update>
+    <select id="getWordList" resultType="com.wx.speaking.bean.Word">
+        SELECT * FROM word WHERE course_id=#{courseId}
+    </select>
+
+    <insert id="updateWord">
+        INSERT INTO
+        word(id,word,course_id,score,flag,video_path,count)
+        VALUES
+        (#{id},#{word},#{courseId},#{score},#{flag},#{video_path},1)
+        ON DUPLICATE KEY UPDATE
+        score=#{score}, count=count+1
+    </insert>
 
     <select id="getAllWord" resultType="com.wx.speaking.bean.Word">
         SELECT * FROM word
