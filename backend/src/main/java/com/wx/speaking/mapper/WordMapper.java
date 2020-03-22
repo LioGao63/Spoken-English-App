@@ -10,6 +10,8 @@ public interface WordMapper {
 
     public Word getWordById(int id);
 
+    public List<Word> getWordList(int courseId);
+
     public void updateWord(Word word);
 
     public List<Word> getAllWord();
