@@ -6,11 +6,9 @@ public class Word {
     private String word;
     private String videoPath;
     private Integer courseId;
-//    private Double accuracyScore;
-//    private Double fluencyScore;
-//    private Double integrityScore;
-    private Double totalScore;
+    private Double score;
     private Integer flag;
+    private Integer count;
 
 
     @Override
@@ -20,8 +18,9 @@ public class Word {
                 ", word='" + word + '\'' +
                 ", videoPath='" + videoPath + '\'' +
                 ", courseId=" + courseId +
-                ", totalScore=" + totalScore +
-                ", flag='" + flag + '\'' +
+                ", score=" + score +
+                ", flag=" + flag +
+                ", count=" + count +
                 '}';
     }
 
@@ -57,15 +56,23 @@ public class Word {
         this.courseId = courseId;
     }
 
-    public Double getTotalScore() {
-        return totalScore;
+    public Double getScore() {
+        return score;
     }
 
-    public void setTotalScore(Double totalScore) {
-        this.totalScore = totalScore;
+    public void setScore(Double totalScore) {
+        this.score = totalScore;
     }
 
     public Integer getFlag() { return flag; }
 
     public void setFlag(Integer flag) { this.flag = flag; }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
 }

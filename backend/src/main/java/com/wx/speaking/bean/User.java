@@ -4,9 +4,9 @@ public class User {
 
     private String id;
     private String userName;
-    private Integer userSex;
+    private String userSex;
     private String email;
-    private Integer education;
+    private String education;
     private String intro;
 
     @Override
@@ -38,11 +38,11 @@ public class User {
         this.userName = userName;
     }
 
-    public Integer getUserSex() {
+    public String getUserSex() {
         return userSex;
     }
 
-    public void setUserSex(Integer userSex) {
+    public void setUserSex(String userSex) {
         this.userSex = userSex;
     }
 
@@ -54,11 +54,11 @@ public class User {
         this.email = email;
     }
 
-    public Integer getEducation() {
+    public String getEducation() {
         return education;
     }
 
-    public void setEducation(Integer education) {
+    public void setEducation(String education) {
         this.education = education;
     }
 

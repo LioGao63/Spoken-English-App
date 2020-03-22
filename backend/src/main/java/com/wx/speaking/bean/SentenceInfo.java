@@ -1,66 +1,41 @@
 package com.wx.speaking.bean;
 
-public class Sentence {
-
-    private Integer id;
-    private String content;
-    private String videoPath;
-    private Integer courseId;
+public class SentenceInfo {
+    private String userId;
+    private Integer sentenceId;
     private Double accuracyScore;
     private Double fluencyScore;
     private Double integrityScore;
-    private String wordScore;
     private Double totalScore;
-    private Integer flag;
     private Integer count;
 
     @Override
     public String toString() {
-        return "Sentence{" +
-                "id=" + id +
-                ", content='" + content + '\'' +
-                ", videoPath='" + videoPath + '\'' +
-                ", courseId=" + courseId +
+        return "SentenceInfo{" +
+                "userId='" + userId + '\'' +
+                ", sentenceId=" + sentenceId +
                 ", accuracyScore=" + accuracyScore +
                 ", fluencyScore=" + fluencyScore +
                 ", integrityScore=" + integrityScore +
-                ", wordScore='" + wordScore + '\'' +
                 ", totalScore=" + totalScore +
-                ", flag=" + flag +
                 ", count=" + count +
                 '}';
     }
 
-    public Integer getId() {
-        return id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getContent() {
-        return content;
+    public Integer getSentenceId() {
+        return sentenceId;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getVideoPath() {
-        return videoPath;
-    }
-
-    public void setVideoPath(String videoPath) {
-        this.videoPath = videoPath;
-    }
-
-    public Integer getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
+    public void setSentenceId(Integer sentenceId) {
+        this.sentenceId = sentenceId;
     }
 
     public Double getAccuracyScore() {
@@ -87,28 +62,12 @@ public class Sentence {
         this.integrityScore = integrityScore;
     }
 
-    public String getWordScore() {
-        return wordScore;
-    }
-
-    public void setWordScore(String wordScore) {
-        this.wordScore = wordScore;
-    }
-
     public Double getTotalScore() {
         return totalScore;
     }
 
     public void setTotalScore(Double totalScore) {
         this.totalScore = totalScore;
-    }
-
-    public Integer getFlag() {
-        return flag;
-    }
-
-    public void setFlag(Integer flag) {
-        this.flag = flag;
     }
 
     public Integer getCount() {
@@ -119,3 +78,4 @@ public class Sentence {
         this.count = count;
     }
 }
+
