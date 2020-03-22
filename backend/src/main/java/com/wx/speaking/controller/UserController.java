@@ -12,13 +12,13 @@ public class UserController {
     UserMapper userMapper;
 
     @GetMapping("/user/{id}")
-    public User getUser(@PathVariable("id") Integer id){
+    public User getUser(@PathVariable("id") String id){
         return userMapper.getUserById(id);
     }
 
     @PostMapping("/addUser")
-    public void addUser(User user){
-        userMapper.addUser(user);
+    public void addUser(String id){
+        userMapper.addUser(id);
     }
 
     @PutMapping("/updata")
