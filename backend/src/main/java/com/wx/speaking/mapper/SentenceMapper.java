@@ -10,7 +10,8 @@ public interface SentenceMapper {
 
     public Sentence getSentenceById(Integer id);
 
-    public void updateSentence(Sentence sentence);
+    public void updateSentence(Integer id, Double totalScore, Double accuracyScore,
+                               Double fluencyScore, Double integrityScore, String wordScore);
 
     public List<Sentence> getAllSentence();
 

@@ -5,27 +5,27 @@
 
 <mapper namespace="com.wx.speaking.mapper.SentenceInfoMapper">
 
-    <select id="searchSentence_info" resultType="com.wx.speaking.bean.SentenceInfo">
+    <select id="getSentenceInfo" resultType="com.wx.speaking.bean.SentenceInfo">
         SELECT * FROM sentence_info WHERE user_id=#{userId} and sentence_id=#{sentenceId}
     </select>
 
-    <insert id="insertSentence_info">
+    <insert id="insertSentenceInfo">
         INSERT INTO
-        sentence_info(userId,sentenceId,accuracyScore,fluencyScore,integrityScore,totalScore,count)
+        sentence_info(user_id,sentence_id,total_score,accuracy_score,fluency_score,integrity_score,count)
         VALUES
-        (#{userId},#{sentenceId},#{accuracyScore},#{fluencyScore},#{integrityScore},#{totalScore},1)
+        (#{userId},#{sentenceId},#{totalScore},#{accuracyScore},#{fluencyScore},#{integrityScore},1)
         ON DUPLICATE KEY UPDATE
-        accuracy_score=#{accuracyScore},fluency_score=#{fluencyScore},integrity_score=#{integrityScore},total_score,count=count+1
+        accuracy_score=#{accuracyScore},fluency_score=#{fluencyScore},integrity_score=#{integrityScore},total_score=#{totalScore},count=count+1
     </insert>
 
-    <update id="updateSentence_info" >
+    <update id="updateSentenceInfo" >
         UPDATE sentence_info
         SET
-        sentence_id = #{sentenceId},
         accuracy_score = #{accuracyScore},
         fluency_score = #{fluencyScore},
         integrity_score = #{integrityScore},
-        total_score = #{totalScore}
+        total_score = #{totalScore},
+        count = count+1
         WHERE user_id=#{userId} and sentence_id=#{sentenceId}
     </update>
 

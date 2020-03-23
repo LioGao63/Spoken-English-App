@@ -6,7 +6,7 @@
 <mapper namespace="com.wx.speaking.mapper.WordMapper">
 
     <select id="getWordById" resultType="com.wx.speaking.bean.Word">
-        SELECT * FROM word WHERE id=#{id}
+        SELECT * FROM word WHERE id=#{word_id}
     </select>
 
     <select id="getWordList" resultType="com.wx.speaking.bean.Word">
@@ -14,12 +14,7 @@
     </select>
 
     <insert id="updateWord">
-        INSERT INTO
-        word(id,word,course_id,score,flag,video_path,count)
-        VALUES
-        (#{id},#{word},#{courseId},#{score},#{flag},#{video_path},1)
-        ON DUPLICATE KEY UPDATE
-        score=#{score}, count=count+1
+        UPDATE word SET score=#{score}, count=count+1 WHERE id=#{word_id}
     </insert>
 
     <select id="getAllWord" resultType="com.wx.speaking.bean.Word">

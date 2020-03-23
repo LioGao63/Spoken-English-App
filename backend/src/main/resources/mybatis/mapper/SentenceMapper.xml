@@ -8,13 +8,10 @@
     </select>
 
     <update id="updateSentence">
-        INSERT INTO sentence(id,content,video_path,course_id,
-        total_score,accuracy_score,fluency_score,integrity_score,word_score,flag,count)
-        VALUES (#{id},#{content},#{videoPath},#{courseId},
-        #{totalScore},#{accuracyScore},#{fluencyScore},#{integrityScore},#{wordScore},#{flag},1)
-        ON DUPLICATE KEY UPDATE
+        UPDATE sentence SET
         total_score=#{totalScore},accuracy_score=#{accuracyScore},fluency_score=#{fluencyScore},
         integrity_score=#{integrityScore},word_score=#{wordScore},count=count+1
+        WHERE id=#{id}
     </update>
 
     <select id="getSentenceList" resultType="com.wx.speaking.bean.Sentence">

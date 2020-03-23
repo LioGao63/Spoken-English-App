@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface CourseMapper {
 
-    public void addUserCourse(String id, Integer courseId);
+    public void addUserCourse(Course course);
 
     public Course getCourseByUserId(Integer id);
 }

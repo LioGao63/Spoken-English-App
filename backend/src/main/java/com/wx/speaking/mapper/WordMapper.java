@@ -8,11 +8,11 @@ import java.util.List;
 @Mapper
 public interface WordMapper {
 
-    public Word getWordById(int id);
+    public Word getWordById(Integer word_id);
 
-    public List<Word> getWordList(int courseId);
+    public List<Word> getWordList(Integer courseId);
 
-    public void updateWord(Word word);
+    public void updateWord(Integer word_id, Double score);
 
     public List<Word> getAllWord();
 

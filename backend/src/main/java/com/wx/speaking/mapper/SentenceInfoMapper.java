@@ -7,10 +7,12 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface SentenceInfoMapper {
     //插入用户的句子分数
-    void insertSentenceInfo(SentenceInfo sentenceInfo);
+    void insertSentenceInfo(String userId, Integer sentenceId, Double totalScore,
+                            Double accuracyScore, Double fluencyScore, Double integrityScore);
 
-    //跟新用户的句子分数
-    void updateSentenceInfo(SentenceInfo sentenceInfo);
+    //更新用户的句子分数
+    void updateSentenceInfo(String userId, Integer sentenceId, Double totalScore,
+                            Double accuracyScore, Double fluencyScore, Double integrityScore);
 
     //查找用户的句子分数
     SentenceInfo getSentenceInfo(String userId, Integer sentenceId);
