@@ -14,6 +14,8 @@ public class Course {
 
     private Integer type;
 
+    private String intro;
+
     @Override
     public String toString() {
         return "Course{" +
@@ -23,6 +25,7 @@ public class Course {
                 ", difficulty=" + difficulty +
                 ", count=" + count +
                 ", type=" + type +
+                ", intro='" + intro + '\'' +
                 '}';
     }
 
@@ -73,5 +76,13 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
     }
 }

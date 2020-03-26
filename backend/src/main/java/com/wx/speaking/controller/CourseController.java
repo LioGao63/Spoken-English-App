@@ -1,5 +1,6 @@
 package com.wx.speaking.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.wx.speaking.bean.Course;
 import com.wx.speaking.bean.Sentence;
 import com.wx.speaking.bean.Word;
@@ -29,6 +30,13 @@ public class CourseController {
     @PostMapping("/addCourse")
     public void addCourse(Course course){
         courseMapper.addUserCourse(course);
+    }
+
+    @GetMapping("getCourseList")
+    public List<Course> getAllCourse(HttpServletRequest request){
+        JSONArray res = new JSONArray();
+        List<Course> courseList = courseMapper.getAllCourse();
+        return courseList;
     }
 
     @GetMapping("/getWordList")
