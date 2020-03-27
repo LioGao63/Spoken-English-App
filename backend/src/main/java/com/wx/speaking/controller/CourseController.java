@@ -28,15 +28,24 @@ public class CourseController {
     SentenceMapper sentenceMapper;
 
     @PostMapping("/addCourse")
-    public void addCourse(Course course){
-        courseMapper.addUserCourse(course);
+    public void addCourse(HttpServletRequest request){
+        String user_id = request.getParameter("user_id");
+        Integer course_id = Integer.valueOf(request.getParameter("course_id"));
+        System.out.println(user_id + course_id);
+        courseMapper.addUserCourse(user_id, course_id);
     }
 
-    @GetMapping("getCourseList")
+    @GetMapping("/getCourseList")
     public List<Course> getAllCourse(HttpServletRequest request){
         JSONArray res = new JSONArray();
         List<Course> courseList = courseMapper.getAllCourse();
         return courseList;
+    }
+
+    @GetMapping("/getCourseById")
+    public Course getCourseById(HttpServletRequest request){
+        Integer course_id = Integer.valueOf(request.getParameter("course_id"));
+        return courseMapper.getCourseById(course_id);
     }
 
     @GetMapping("/getWordList")
@@ -51,6 +60,12 @@ public class CourseController {
         Integer course_id = Integer.valueOf(request.getParameter("course_id"));
         List<Sentence> sentenceList = sentenceMapper.getSentenceList(course_id);
         return sentenceList;
+    }
+
+    @GetMapping("/getCourseByUserId")
+    public List<Course> getCourseByUserId(HttpServletRequest request){
+        String id = request.getParameter("user_id");
+        return courseMapper.getCourseByUserId(id);
     }
 
 
