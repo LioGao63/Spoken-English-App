@@ -3,11 +3,15 @@ package com.wx.speaking.mapper;
 import com.wx.speaking.bean.Sign;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.Date;
+
 @Mapper
 public interface SignMapper {
 
-    public void addSignUser(String userId);
+    void addSignUser(String userId);
 
-    public Sign getSignById(String userId);
+    Sign getSignById(String userId);
+
+    void updateSign(String userId, String newDate);
 
 }
