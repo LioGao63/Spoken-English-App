@@ -1,6 +1,8 @@
 package com.wx.speaking.controller;
 
+import com.wx.speaking.bean.Sign;
 import com.wx.speaking.bean.User;
+import com.wx.speaking.mapper.SignMapper;
 import com.wx.speaking.mapper.UserCourseMapper;
 import com.wx.speaking.mapper.UserMapper;
 import com.wx.speaking.utils.HttpRequest ;
@@ -29,6 +31,9 @@ public class LoginController {
 
     @Autowired
     UserCourseMapper userCourseMapper;
+
+    @Autowired
+    SignMapper signMapper;
 
     @PostMapping( "/login")
     public void buttonTest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,9 +65,12 @@ public class LoginController {
         String openid = (String) json.get("openid");
         System.out.println(openid);
         userMapper.addUser(openid);
+        signMapper.addSignUser(openid);
+        Sign sign = signMapper.getSignById(openid);
         result.put("id", openid);
-        List<Integer> courseList = userCourseMapper.getCourseByUserId(openid);
-        result.put("course_list", courseList);
+        result.put("sign", sign);
+//        List<Integer> courseList = userCourseMapper.getCourseByUserId(openid);
+//        result.put("course_list", courseList);
 
         System.out.println("code="+code);
 
