@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wx.speaking.mapper.SignMapper">
+    <insert id="addSignUser">
+        INSERT IGNORE INTO sign_in(user_id) VALUES (#{userId})
+    </insert>
+
+    <select id="getSignById" resultType="com.wx.speaking.bean.Sign">
+        SELECT FROM sign_in WHERE user_id=#{userId}
+    </select>
+
+
+</mapper>
