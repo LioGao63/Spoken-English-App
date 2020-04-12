@@ -12,6 +12,8 @@ public interface SignMapper {
 
     Sign getSignById(String userId);
 
-    void updateSign(String userId, String newDate);
+    void updateSignByUser(String userId, String newDate);
+
+    void updateSignByTask(String newDate);
 
 }
